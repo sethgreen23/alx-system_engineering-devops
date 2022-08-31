@@ -17,3 +17,5 @@ create a directory name firstdirectory in the tmp forlder
 change file from a folder to another
 8-firstdelete
 delete file
+9-firstdirdeletion
+delete folder
