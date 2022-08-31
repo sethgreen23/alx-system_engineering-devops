@@ -21,3 +21,5 @@ delete file
 delete folder
 10-back
 return to the previous directory
+11-lists
+list of directorys
