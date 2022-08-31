@@ -15,3 +15,5 @@ diplay content long format with user and group id display numericaly and hiden f
 create a directory name firstdirectory in the tmp forlder
 7-movethatfile
 change file from a folder to another
+8-firstdelete
+delete file
