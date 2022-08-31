@@ -13,3 +13,5 @@ display direcotory content with long format
 diplay content long format with user and group id display numericaly and hiden files
 6-firstdirectory
 create a directory name firstdirectory in the tmp forlder
+7-movethatfile
+change file from a folder to another
