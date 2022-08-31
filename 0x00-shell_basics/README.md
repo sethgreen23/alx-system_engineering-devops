@@ -9,3 +9,5 @@ change working directory to the user home directory
 display long format
 4-listmorefiles
 display direcotory content with long format
+5-listfilesdigitonly
+diplay content long format with user and group id display numericaly and hiden files
