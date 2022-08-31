@@ -7,3 +7,5 @@ list the content of the current directory
 change working directory to the user home directory
 3-listfiles
 display long format
+4-listmorefiles
+display direcotory content with long format
