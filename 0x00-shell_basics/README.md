@@ -23,3 +23,5 @@ delete folder
 return to the previous directory
 11-lists
 list of directorys
+12-file_type
+give the file type
