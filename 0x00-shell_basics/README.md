@@ -5,3 +5,5 @@ contains the shell command to show the absolute path name of the current working
 list the content of the current directory
 2-bring_me_home
 change working directory to the user home directory
+3-listfiles
+display long format
