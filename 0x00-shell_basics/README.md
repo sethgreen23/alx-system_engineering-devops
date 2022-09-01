@@ -29,7 +29,9 @@ give the file type
 make a symbolic link to a folder
 14-copy_html
 copy file that are new and updated
-15-100-lets_move
+100-100-lets_move
 move files strating with uppercase
-16-101-clean_emacs
+101-101-clean_emacs
 delete all files that end with carecter ~
+102-tree
+Create a script that creates the directories welcome/, welcome/to/ and welcome/to/school in the current directory.
