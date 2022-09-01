@@ -25,3 +25,5 @@ return to the previous directory
 list of directorys
 12-file_type
 give the file type
+13-symbolic_link
+make a symbolic link to a folder
