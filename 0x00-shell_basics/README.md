@@ -37,3 +37,5 @@ delete all files that end with carecter ~
 Create a script that creates the directories welcome/, welcome/to/ and welcome/to/school in the current directory.
 103-commas
 create commas and /
+104-school.mgc
+create magic file
