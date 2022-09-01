@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -avF --format=comma
+ls -vamp
