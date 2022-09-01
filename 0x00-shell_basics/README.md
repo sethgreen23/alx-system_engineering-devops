@@ -35,3 +35,5 @@ move files strating with uppercase
 delete all files that end with carecter ~
 102-tree
 Create a script that creates the directories welcome/, welcome/to/ and welcome/to/school in the current directory.
+103-commas
+create commas and /
