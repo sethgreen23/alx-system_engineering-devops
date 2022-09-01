@@ -31,3 +31,5 @@ make a symbolic link to a folder
 copy file that are new and updated
 15-100-lets_move
 move files strating with uppercase
+16-101-clean_emacs
+delete all files that end with carecter ~
