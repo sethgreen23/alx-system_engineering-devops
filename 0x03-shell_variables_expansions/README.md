@@ -4,3 +4,4 @@ hello you
 path sussccs
 paths
 global varibale
+local variables
