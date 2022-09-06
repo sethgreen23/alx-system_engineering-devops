@@ -11,3 +11,4 @@ true knowledge
 divide rule
 love exponent breath
 binary to decimal
+print all except
