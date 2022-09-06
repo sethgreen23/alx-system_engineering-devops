@@ -13,3 +13,4 @@ love exponent breath
 binary to decimal
 print all except
 pront float
+from decimal hexadecimal
