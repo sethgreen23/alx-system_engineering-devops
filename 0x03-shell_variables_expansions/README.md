@@ -9,3 +9,4 @@ create local VAriables
 Create global varaibles
 true knowledge
 divide rule
+love exponent breath
