@@ -8,3 +8,4 @@ local variables
 create local VAriables
 Create global varaibles
 true knowledge
+divide rule
