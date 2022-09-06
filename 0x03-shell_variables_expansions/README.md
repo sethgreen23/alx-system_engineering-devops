@@ -14,3 +14,4 @@ binary to decimal
 print all except
 pront float
 from decimal hexadecimal
+rot 13
