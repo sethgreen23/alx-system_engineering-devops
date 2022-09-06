@@ -10,3 +10,4 @@ Create global varaibles
 true knowledge
 divide rule
 love exponent breath
+binary to decimal
