@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -mavF --file-type
+ls -paxm
