@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# count number of occurance of a line
+
+fname=apache-access.log
+awk '{print $1,$9}' $fname | sort | uniq -c | sort -nr
