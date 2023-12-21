@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# red the content of a file
+
+IFS=$'\n'
+
+while read -r line
+do
+	printf "%s\n$line"
+done < /etc/passwd
