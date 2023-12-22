@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# script that show the line containing bash
+
+list=$(ps -eH u --forest)
+while read -r line
+do
+	echo "$line" | cut -c "bash"
+done < "$list"
