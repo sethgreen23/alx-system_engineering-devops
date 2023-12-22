@@ -26,7 +26,7 @@ int main(int argc, char **argv)
 		}
 		if (pid == 0)
 		{
-			printf("Zombie process created, PID: %d\n", getpid());
+			printf("Zombie process created, PID: %ld\n", getpid());
 			exit(0);
 		}
 	}
