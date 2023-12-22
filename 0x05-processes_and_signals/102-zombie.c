@@ -15,10 +15,16 @@ int infinite_while(void);
 int main(int argc, char **argv)
 {
 	int i;
+	pid_t pid;
 
 	for (i = 0; i < 5; i++)
 	{
-		if (fork() == 0)
+		pid = fork();
+		if (pid < 0)
+		{
+			exit(EXIT_FAILURE);
+		}
+		if (pid == 0)
 		{
 			printf("Zombie process created, PID: %d\n", getpid());
 			exit(0);
