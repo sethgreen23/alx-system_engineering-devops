@@ -2,9 +2,10 @@
 # create a file
 # shellcheck disable=SC2009
 
-echo $$ > /var/run/myscript.pid
+file=/var/run/myscript.pid
+echo $$ > $file
 
-trap "rm -r /var/run/myscript.pid; exit;" SIGQUIT SIGTERM
+trap "rm -r $file; exit;" SIGQUIT SIGTERM
 trap "echo 'I hate the kill command'" SIGTERM
 trap "echo 'Y U no love me?!'" SIGINT
 
