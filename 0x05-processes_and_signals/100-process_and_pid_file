@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 # create a file
+# shellcheck disable=SC2009
 
-touch /var/run/myscript.pid
-pid=$(pgrep -f  /var/run/myscript.pid)
-echo "$pid" > /var/run/myscript.pid
+echo $$ > /var/run/myscript.pid
 
 trap "rm /var/run/myscript.pid; kill -9  100-process_and_pid_file" SIGQUIT
 trap "echo I hate the kill command" SIGTERM
