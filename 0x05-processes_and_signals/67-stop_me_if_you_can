@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# bash script that stop 4-to_infinity_add_beyound process
+# shellcheck disable=SC2009
+
+pkill -f 7-highlander

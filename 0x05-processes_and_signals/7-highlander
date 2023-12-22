@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# bash script to kill a file
+
+while true
+do
+	echo "To infinity and beyond"
+	trap "echo I am invincible!!!" SIGTERM
+	sleep 2
+done
