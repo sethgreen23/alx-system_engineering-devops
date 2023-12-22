@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # print all processess
 
-ps -feH --forest
+ps -eH u --forest
