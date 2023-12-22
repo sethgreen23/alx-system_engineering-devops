@@ -7,12 +7,10 @@ int infinite_while(void);
 
 /**
  * main - main function
- * @argc: count argument
- * @argv: arguments
  *
  * Return: 0 on success
  */
-int main(int argc, char **argv)
+int main(void)
 {
 	int i;
 	pid_t pid;
@@ -26,7 +24,7 @@ int main(int argc, char **argv)
 		}
 		if (pid == 0)
 		{
-			printf("Zombie process created, PID: %ld\n", getpid());
+			printf("Zombie process created, PID: %d\n", getpid());
 			exit(0);
 		}
 	}
