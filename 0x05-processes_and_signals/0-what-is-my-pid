@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# bash scrip that displays its own pid
+
+echo "$(pgrep bash -n)"
