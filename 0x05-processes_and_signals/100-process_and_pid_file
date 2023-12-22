@@ -4,9 +4,9 @@
 
 echo $$ > /var/run/myscript.pid
 
-trap "rm /var/run/myscript.pid; kill -9  100-process_and_pid_file" SIGQUIT
+trap "rm /var/run/myscript.pid; exit;" SIGQUIT SIGTERM
 trap "echo 'I hate the kill command'" SIGTERM
-trap "echo 'Y U no love me?!'; exit;" SIGINT SIGTERM
+trap "echo 'Y U no love me?!'" SIGINT
 
 while true
 do
