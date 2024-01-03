@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#diplays listening ports that show listing sockes, pid and prog 
+#to which ech socket belong
+netstat -tunlp
