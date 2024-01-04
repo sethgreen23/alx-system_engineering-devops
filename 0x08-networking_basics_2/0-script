@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+cp /etc/hosts /etc/hosts.old
+sed -e '/127.*/c\127.0.0.2 localhost' -e '/.*facebook.com/c\8.8.8.8 facebook.com' /etc/hosts > ~/hosts.new
+cp -f ~/hosts.new /etc/hosts
