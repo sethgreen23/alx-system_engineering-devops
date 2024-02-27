@@ -1,15 +1,16 @@
 #!/usr/bin/env bash
-# install nginx 
+# install nginx
 # should listen to port 80
 # when querying nginx at its root with GET request using curl it
 # must return  Hello World!
 
 apt-get -y update
 apt-get -y install nginx
-ufw enable
 ufw allow OpenSSH
 ufw allow 'Nginx HTTP'
+ufw enable
 for i in /var/www/html/index*; do
         echo "Hello World!" > "$i"
 done
+sed -i "/server_name _;$/a\ \ \ \ \ \ \ \ rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;" /etc/nginx/sites-available/default
 service nginx start
