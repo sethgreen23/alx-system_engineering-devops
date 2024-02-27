@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# install nginx
+# should listen to port 80
+# when querying nginx at its root with GET request using curl it
+# must return  Hello World!
+
+apt-get -y update
+apt-get -y install nginx
+for i in /var/www/html/index*; do
+        echo "Hello World!" > "$i"
+done
+sed -i "/server_name _;$/a\ \ \ \ \ \ \ \ rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;" /etc/nginx/sites-available/default
+echo "Ceci n'est pas une page" > /var/www/html/404.html
+sed -i "/rewrite.*/a\ \ \ \ \ \ \ \ error_page 404 /404.html;\\n\ \ \ \ \ \ \ \ location = /404.html {\\n\ \ \ \ \ \ \ \ \ \ \ \ \ root /var/www/html;\\n\ \ \ \ \ \ \ \ \ \ \ \ \ internal;\\n\ \ \ \ \ \ \ \ }" /etc/nginx/sites-available/default
+service nginx start
