@@ -6,9 +6,6 @@
 
 apt-get -y update
 apt-get -y install nginx
-ufw allow OpenSSH
-ufw allow 'Nginx HTTP'
-ufw enable
 for i in /var/www/html/index*; do
         echo "Hello World!" > "$i"
 done
