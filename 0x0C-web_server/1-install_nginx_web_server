@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# install nginx 
+# should listen to port 80
+# when querying nginx at its root with GET request using curl it
+# must return  Hello World!
+
+apt-get -y update
+apt-get -y install nginx
+ufw enable
+ufw allow 'Nginx HTTP'
+for i in /var/www/html/index*; do
+        echo "Hello World!" > "$i"
+done
