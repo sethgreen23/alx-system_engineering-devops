@@ -11,3 +11,4 @@ ufw allow 'Nginx HTTP'
 for i in /var/www/html/index*; do
         echo "Hello World!" > "$i"
 done
+service nginx start
