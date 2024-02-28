@@ -29,7 +29,7 @@ $server_config = "
 		listen [::]:80 default_server;
 		
 		root /var/www/html;
-		index index.html
+		index index.html;
 
 		server_name _;
 		rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;
