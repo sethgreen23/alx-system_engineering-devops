@@ -3,7 +3,7 @@
 # rediretion must be a "301" move permanentyly
 
 exec { 'apt-update':
-  command     => '/usr/bin/apt-get update',
+  command     => '/usr/bin/apt-get -y update',
   refreshonly => true,
   before      => Package['nginx'],
 }
