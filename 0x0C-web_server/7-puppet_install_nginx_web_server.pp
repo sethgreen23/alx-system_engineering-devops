@@ -2,6 +2,12 @@
 # return string "Hello World!" when quering the root
 # rediretion must be a "301" move permanentyly
 
+exec { 'apt-update':
+  command     => '/usr/bin/apt-get update',
+  refreshonly => true,
+  before      => Package['nginx'],
+}
+
 package { 'nginx':
   ensure => installed,
 }
