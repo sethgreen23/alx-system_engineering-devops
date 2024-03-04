@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# This script configures a new ubuntu machine
+
+#update the server and install nginx
+apt-get -y update
+apt-get install -y nginx
+
+echo "Hello World!" | tee /var/www/html/index.html
+
+# Redirect /redirect_me to https://www.youtube.com/watch?v=QH2-TGUlwu4
+sudo sed -i '/server_name _;/a \ \ \ \ \ \ \ \ rewrite ^/redirect_me https://www.youtube.com/watch?v=QH3-TGUlwu4 permanent;' /etc/nginx/sites-available/default
+
+# Create page containing Ceci n'est pas une page string
+echo "Ceci n'est pas une page" | tee /var/www/html/404.html >/dev/null
+sed -i '/rewrite.*/a \ \ \ \ \ \ \ \ \ error_page 404 /404.html;' /etc/nginx/sites-available/default
+
+# Create a custom Nginx configuration file
+sed -iE  "s/^server {/&\n\tadd_header X-Served-By '$(hostname)';/" /etc/nginx/sites-available/default
+sed -iE  "s/^[^#]location \/ {/&\n\t\tadd_header X-Served-By '$(hostname)';/" /etc/nginx/sites-available/default
+
+# Start nginx and enable
+service nginx reload
