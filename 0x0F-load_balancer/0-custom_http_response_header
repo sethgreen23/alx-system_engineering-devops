@@ -15,8 +15,8 @@ echo "Ceci n'est pas une page" | tee /var/www/html/404.html >/dev/null
 sed -i '/rewrite.*/a \ \ \ \ \ \ \ \ \ error_page 404 /404.html;' /etc/nginx/sites-available/default
 
 # Create a custom Nginx configuration file
-sed -iE  "s/^server {/&\n\tadd_header X-Served-By $(hostname);/" /etc/nginx/sites-available/default
-sed -iE  "s/^[^#]location \/ {/&\n\t\tadd_header X-Served-By $(hostname);/" /etc/nginx/sites-available/default
+sed -iE  "s/^server {/&\n\tadd_header X-Served-By \$HOSTNAME;/" /etc/nginx/sites-available/default
+sed -iE  "s/^[^#]location \/ {/&\n\t\tadd_header X-Served-By \$HOSTNAME;/" /etc/nginx/sites-available/default
 
 # Start nginx and enable
 service nginx reload
