@@ -12,7 +12,23 @@ file { '/var/www/html/index.nginx-debian.html':
 # Configure redirect_me
 file { '/etc/nginx/sites-enabled/default':
   ensure  => present,
-  content => template('module_name/nginx_config.erb'),
+  content => "
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+
+    root /var/www/html;
+    index index.html index.htm index.nginx-debian.html;
+
+    server_name _;
+
+    location /redirect_me {
+        return 301 http://youtube.com;
+    }
+
+    # Other location directives if needed
+}
+",
 }
 
 # Configure custom 404 page
@@ -21,7 +37,7 @@ file { '/usr/share/nginx/html/404.html':
   content => "Ceci n'est pas une page\n",
 }
 
-# Add custom HTTP response header
+# Add custom HTTP response header to nginx.conf
 file_line { 'custom_header_nginx_conf':
   ensure => present,
   line   => '    add_header X-Served-By $HOSTNAME;',
@@ -29,6 +45,7 @@ file_line { 'custom_header_nginx_conf':
   match  => '^http {',
 }
 
+# Add custom HTTP response header to default site configuration
 file_line { 'custom_header_default_conf':
   ensure => present,
   line   => '    add_header X-Served-By $HOSTNAME;',
