@@ -9,4 +9,4 @@ apt-get -y install nginx
 for i in /var/www/html/index*; do
         echo "Hello World!" > "$i"
 done
-service nginx start
+service nginx restart
