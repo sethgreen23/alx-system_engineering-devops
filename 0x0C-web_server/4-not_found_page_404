@@ -13,6 +13,6 @@ sudo sed -i '53i\\n	 rewrite ^/redirect_me https://www.youtube.com/watch?v=QH3-T
 # Create page containing Ceci n'est pas une page string
 echo "Ceci n'est pas une page" | tee /var/www/html/404.html >/dev/null
 #sed -i '/rewrite.*/a \ \ \ \ \ \ \ \ \ error_page 404 /404.html;' /etc/nginx/sites-available/default
-sed -i '53i\\n	error_page 404 /404.html;' /etc/nginx/sites-available/default
+sudo sed -i '53i\\n	error_page 404 /404.html;' /etc/nginx/sites-available/default
 # Start nginx
 service nginx restart
