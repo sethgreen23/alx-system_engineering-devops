@@ -1,34 +1,21 @@
 #!/usr/bin/env bash
-# shellcheck disable=SC2154
-# Check for updates
+# This script configures a new ubuntu machine
+
+#update the server and install nginx
 apt-get -y update
+apt-get install -y nginx
 
-# Installs nginx
-apt-get -y install nginx
+echo "Hello World!" | tee /var/www/html/index.html
 
-# Changes the root page to contain the stril 'Hello World!'
-echo "Hello World!" > /var/www/html/index.nginx-debian.html
+# Redirect /redirect_me to https://www.youtube.com/watch?v=QH2-TGUlwu4
+sudo sed -i '53i\\n	 rewrite ^/redirect_me https://www.youtube.com/watch?v=QH3-TGUlwu4 permanent;' /etc/nginx/sites-available/default
 
-# configuring the redirect_me
-sudo sed -i '53i\location =  /redirect_me { return 301 http://youtube.com;}' /etc/nginx/sites-enabled/default
+# Create page containing Ceci n'est pas une page string
+echo "Ceci n'est pas une page" | tee /var/www/html/404.html >/dev/null
+#sed -i '/rewrite.*/a \ \ \ \ \ \ \ \ \ error_page 404 /404.html;' /etc/nginx/sites-available/default
+sudo sed -i '53i\\n	error_page 404 /404.html;' /etc/nginx/sites-available/default
 
-# customizing the 404
-printf "Ceci n'est pas une page\n" > /usr/share/nginx/html/404.html
-sudo sed -i '53i\       error_page 404 /404.html;\n             location = /404.html {\n                      root /usr/share/nginx/html;\n                   internal;}' /etc/nginx/sites-enabled/default
-# add custome http response header
-# if [ "$HOSTNAME" == "493245-web-01" ]; then
-#       sudo sed -i "29i\       add_header X-Served-By 493245-web-01" /etc/nginx/nginx.conf
-#       sudo sed -i "51i\       add_header X-Served-By 493245-web-01" /etc/nginx/sites-enabled/default
-#else
-#       sudo sed -i "29i\       add_header X-Served-By 493245-web-02" /etc/nginx/nginx.conf
-#       sudo sed -i "51i\       add_header X-Served-By 493245-web-02" /etc/nginx/sites-enabled/default
-#fi
-sudo sed -i "29i\       add_header X-Served-By \$HOSTNAME;" /etc/nginx/nginx.conf
-sudo sed -i "51i\       add_header X-Served-By \$HOSTNAME;" /etc/nginx/sites-enabled/default
-
-# Start the nginx service
-if [ "$(pgrep nginx)" ]; then
-        service nginx restart
-else
-        service nginx start
-fi
+# add header
+sed -i "51i\	add_header X-Served-By $(hostname);"  /etc/nginx/sites-available/default
+# Start nginx
+service nginx restart
