@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# print the subdomain and doman and it is record
+
+function show_info()
+{	
+	if [[ -z "$2" ]]; then
+		sub_array=("www" "lb-01" "web-01" "web-02")
+		for sub in "${sub_array[@]}"
+		do
+		pattern="^$sub.$1"
+		subdomain="$sub.$1"
+	dig "$subdomain" | awk -v pat="$pattern" -v sub_d="$sub" '$0 ~ pat { print "The subdomain", sub_d, "is a", $4, "record and points to", $5 }'
+done
+	else
+		pattern="^$2.$1"
+		subdomain="$2.$1"
+	dig "$subdomain" |awk -v pat="$pattern" -v sub_d="$2" '$0 ~ pat { print "The subdomain", sub_d, "is a", $4, "record and points to", $5 }'
+	fi
+}
+show_info "$1" "$2"
