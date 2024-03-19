@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
-# Bash Script that accepts 1 argument and runs the 'whoami' command with the passed argument as the user
+# Bash Script that accepts 1 argument and runs the 'whoami'
 if [ $# -eq 0 ]; then
 	whoami
 	exit 0
 fi
-su - "$1" -s /bin/bash -c 'whoami'
+su "$1" -s /bin/bash -c 'whoami'
