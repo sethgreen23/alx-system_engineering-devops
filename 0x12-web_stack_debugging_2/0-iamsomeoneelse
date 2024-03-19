@@ -1,7 +1,8 @@
-#! /usr/bin/env bash
-# Bash Script that accepts 1 argument and runs the 'whoami'
+#!/usr/bin/env bash
+# command whoami
 if [ $# -eq 0 ]; then
 	whoami
 	exit 0
+else
+	su - "$1" -s /bin/bash -c 'whoami'
 fi
-su "$1" -s /bin/bash -c 'whoami'
