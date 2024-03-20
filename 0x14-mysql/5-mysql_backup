@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# dump the hole database
+mysqldump -uroot -p"$1" tyrell_corp > backup.sql
+tar -cvzf "$(date +%d-%m-%Y)".tgz
