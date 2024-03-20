@@ -1,15 +1,29 @@
 #!/usr/bin/env bash
-#Run nginx with nginx user and listen on port 8080
+# Check for root privileges
+if [ "$(id -u)" -ne 0 ]; then
+    echo "This script must be run as root" >&2
+    exit 1
+fi
 
-# check if port 8080 is being used
-port_pid=$(netstat -tulnp | grep ':8080' | awk '{print $7}' | cut -d/ -f2)
+# Check if port 8080 is being used and stop the process
+port_pid=$(netstat -tulnp | grep ':8080' | awk '{print $7}' | cut -d/ -f1)
 if [ -n "$port_pid" ]; then
-        sudo pkill -f "$port_pid"
+    kill -9 "$port_pid"
 fi
-if ! grep -q "^nginx:" /etc/passwd ; then
-        sudo adduser --system --no-create-home --disabled-login --group nginx
+
+# Check if nginx user exists, and if not, create it
+if ! id -u nginx &>/dev/null; then
+    useradd --system --no-create-home --shell /bin/false nginx
 fi
+
+# Ensure correct permissions for Nginx configuration
 chmod 644 /etc/nginx/nginx.conf
+
+# Update nginx.conf to run as nginx user
 sed -i 's/user www-data;/user nginx;/' /etc/nginx/nginx.conf
-sed -i 's/80/8080/g' /etc/nginx/sites-available/default
-sudo service nginx restart
+
+# Update default site configuration to listen on port 8080
+sed -i 's/listen 80;/listen 8080;/g' /etc/nginx/sites-available/default
+
+# Restart Nginx to apply changes
+systemctl restart nginx
