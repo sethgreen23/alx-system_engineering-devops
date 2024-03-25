@@ -28,7 +28,7 @@ if __name__ == "__main__":
                         for todo in resp_todos:
                             t = {}
                             t["task"] = todo.get('title')
-                            t["completed"] = str(todo.get('completed'))
+                            t["completed"] = todo.get('completed')
                             t["username"] = username
                             todo_lst.append(t)
                         todos_dict = {str(id): todo_lst}
