@@ -26,7 +26,7 @@ if __name__ == "__main__":
                         if todo.get('completed'):
                             completed_list.append(todo)
                     completed_t_c = len(completed_list)
-                    print(f'Employee {name} '
+                    print(f'Employee {name} is '
                           f'done with tasks({completed_t_c}/{all_c}):')
                     for todo in completed_list:
                         print(f'\t {todo.get("title")}')
