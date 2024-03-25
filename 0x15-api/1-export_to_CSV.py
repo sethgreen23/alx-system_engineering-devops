@@ -41,11 +41,13 @@ if __name__ == "__main__":
                         writer = csv.DictWriter(csvfile, fieldnames=fn)
                         # writer.writeheader()
                         for todo in resp_todos:
+                            completed = todo.get('completed')
+                            title = todo.get('title')
                             writer.writerow({
-                                "USER_ID": f'{id}',
-                                "USERNAME": username,
-                                "TASK_COMPLETED_STAT": todo.get('completed'),
-                                "TASK_TITLE": todo.get('title')
+                                "USER_ID": '"'+str(id)+'"',
+                                "USERNAME": '"'+str(username)+'"',
+                                "TASK_COMPLETED_STAT": '"'+str(completed)+'"',
+                                "TASK_TITLE": '"'+str(title)+'"'
                                 })
         except ValueError:
             pass
