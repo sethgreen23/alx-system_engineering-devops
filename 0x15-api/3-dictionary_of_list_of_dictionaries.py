@@ -4,7 +4,7 @@
 if __name__ == "__main__":
     import json
     import requests
-    
+
     dict_user = {}
     req_f = (f'https://jsonplaceholder.typicode.com/users')
     users_req = requests.get(req_f)
@@ -41,31 +41,3 @@ if __name__ == "__main__":
                         todos_dict[str(userId)] = []
                     todos_dict[str(userId)].append(t)
                 json.dump(todos_dict, f)
-        
-            
-
-    # req_f = f'https://jsonplaceholder.typicode.com/todos'
-    # todos_req = requests.get(req_f)
-
-    # if todos_req.status_code == 200:
-    #     resp_todos = todos_req.json()
-    #     filename = f'todo_all_employees.json'
-    #     with open(filename, mode='w') as f:
-    #         todos_dict = {}
-    #         for todo in resp_todos:
-    #             userId = todo.get("userId")
-    #             req_f = (
-    #                 f'https://jsonplaceholder.typicode.com/users/{userId}')
-    #             user_req = requests.get(req_f)
-    #             if user_req.status_code == 200:
-    #                 resp_user = user_req.json()
-    #                 username = resp_user.get("username")
-    #                 t = {}
-    #                 t["username"] = username
-    #                 t["task"] = todo.get('title')
-    #                 t["completed"] = todo.get('completed')
-    #                 if not todos_dict.get(str(userId)):
-    #                     todos_dict[str(userId)] = [t]
-    #                 else:
-    #                     todos_dict[str(userId)].append(t)
-    #             json.dump(todos_dict, f)
