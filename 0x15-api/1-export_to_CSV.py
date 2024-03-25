@@ -23,7 +23,7 @@ if __name__ == "__main__":
                     resp_todos = todos_req.json()
                     fn = ["USER_ID",
                           "USERNAME",
-                          "TASK_COMPLETED_STAT",
+                          "TASK_C_ST",
                           "TASK_TITLE"]
                     filename = f'{id}.csv'
                     with open(filename, mode='w') as csvfile:
@@ -32,9 +32,9 @@ if __name__ == "__main__":
                         for todo in resp_todos:
                             writer.writerow({
                                 "USER_ID": f'{id}',
-                                "USERNAME": username,
-                                "TASK_COMPLETED_STAT": todo.get('completed'),
-                                "TASK_TITLE": todo.get('title')
+                                "USERNAME": f'{username}',
+                                "TASK_C_ST": f'{todo.get("completed")}',
+                                "TASK_TITLE": f'{todo.get("title")}'
                                 })
         except ValueError:
             pass
