@@ -38,16 +38,17 @@ if __name__ == "__main__":
                           "TASK_TITLE"]
                     filename = f'{id}.csv'
                     with open(filename, mode='w') as csvfile:
-                        writer = csv.DictWriter(csvfile, fieldnames=fn)
+                        writer = csv.DictWriter(csvfile, fieldnames=fn,
+                                                doublequote=False)
                         # writer.writeheader()
                         for todo in resp_todos:
                             completed = todo.get('completed')
                             title = todo.get('title')
                             writer.writerow({
-                                "USER_ID": '"'+str(id)+'"',
-                                "USERNAME": '"'+str(username)+'"',
-                                "TASK_COMPLETED_STAT": '"'+str(completed)+'"',
-                                "TASK_TITLE": '"'+str(title)+'"'
+                                "USER_ID": str(id),
+                                "USERNAME": str(username),
+                                "TASK_COMPLETED_STAT": str(completed),
+                                "TASK_TITLE": str(title)
                                 })
         except ValueError:
             pass
