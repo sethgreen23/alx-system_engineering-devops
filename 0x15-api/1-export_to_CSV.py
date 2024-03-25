@@ -21,9 +21,20 @@ if __name__ == "__main__":
                 todos_req = requests.get(req_f)
                 if todos_req.status_code == 200:
                     resp_todos = todos_req.json()
+                    completed_todos_count = 0
+                    all_c = len(resp_todos)
+                    completed_list = []
+                    for todo in resp_todos:
+                        if todo.get('completed'):
+                            completed_list.append(todo)
+                    completed_t_c = len(completed_list)
+                    print(f'Employee {name} is '
+                          f'done with tasks({completed_t_c}/{all_c}):')
+                    for todo in completed_list:
+                        print(f'\t {todo.get("title")}')
                     fn = ["USER_ID",
                           "USERNAME",
-                          "TASK_C_ST",
+                          "TASK_COMPLETED_STAT",
                           "TASK_TITLE"]
                     filename = f'{id}.csv'
                     with open(filename, mode='w') as csvfile:
@@ -32,9 +43,9 @@ if __name__ == "__main__":
                         for todo in resp_todos:
                             writer.writerow({
                                 "USER_ID": f'{id}',
-                                "USERNAME": f'{username}',
-                                "TASK_C_ST": f'{todo.get("completed")}',
-                                "TASK_TITLE": f'{todo.get("title")}'
+                                "USERNAME": username,
+                                "TASK_COMPLETED_STAT": todo.get('completed'),
+                                "TASK_TITLE": todo.get('title')
                                 })
         except ValueError:
             pass
