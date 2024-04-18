@@ -1,3 +1,7 @@
 #!/usr/bin/env bash
-# tells the master Gunicorn renewed all the workers.
-pgrep gunicorn | xargs kill -HUP
+# Gracefully reloads Gunicorn.
+# Get the PID of the Gunicorn process
+PID=$(pgrep gunicorn)
+
+# Reload Gunicorn gracefully
+kill -s HUP $PID
